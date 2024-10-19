@@ -1,0 +1,105 @@
+@import url(pagination.css);
+main .looking .search {
+  width: calc(100% - 2rem);
+  background-color: rgb(var(--background-color));
+  padding: 1rem;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radiu-size);
+}
+main .looking .search .input-bg {
+  display: flex;
+  height: 40px;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.2em;
+  background-color: white;
+  margin-left: 100px;
+  border: var(--default-border-style);
+}
+main .looking .search .input-bg input {
+  width: 100%;
+}
+main .looking .search .input-bg > a {
+  height: 100%;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: var(--default-border-style);
+  box-sizing: border-box;
+}
+main .looking .search-val {
+  height: 100px;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: var(--border-radiu-size);
+  background-color: rgb(var(--background-color));
+}
+main .looking ul li a {
+  margin-top: 1rem;
+  background-color: rgb(var(--background-color));
+  border-radius: var(--border-radiu-size);
+  height: 200px;
+  width: calc(100% - 2rem);
+  display: flex;
+  padding: 1rem;
+}
+main .looking ul li a img {
+  height: 200px;
+  width: 200px;
+}
+main .looking ul li a .message {
+  padding-left: 1rem;
+  width: calc(100% - 1em - 200px);
+}
+main .looking ul li a .message > div {
+  margin-top: 0.5rem;
+}
+main .looking ul li a .message .lrc {
+  line-height: 14px;
+  overflow: hidden;
+  /* 隐藏超出部分 */
+  text-overflow: ellipsis;
+  /* 显示省略号 */
+  display: -webkit-box;
+  /* 使用弹性盒子布局 */
+  -webkit-line-clamp: 6;
+  /* 兼容性处理，可选 */
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  /* 垂直方向布局 */
+}
+main .looking ul li a .message .sign {
+  line-height: 14px;
+  overflow: hidden;
+  /* 隐藏超出部分 */
+  text-overflow: ellipsis;
+  /* 显示省略号 */
+  display: -webkit-box;
+  /* 使用弹性盒子布局 */
+  -webkit-line-clamp: 3;
+  /* 兼容性处理，可选 */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  /* 垂直方向布局 */
+}
+main .looking .no-find {
+  height: 100px;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: var(--border-radiu-size);
+  background-color: rgb(var(--background-color));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+main .looking .no-find > * {
+  margin-bottom: 20px;
+}

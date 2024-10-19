@@ -1,0 +1,53 @@
+:root{
+    --max-box-width: calc(100vw - 4px);
+    --default-border-style:1px solid #ccc;
+    --background-color:255,255,255;
+    --border-radiu-size:.5em;
+    --default-line-height:1.5em;
+    --active-color:#66ccff;
+  }
+  
+  #app{
+    background-image: url("/public/images/image.jpg");
+    position:absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+    width:100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-y: scroll;
+    /* overflow-x: hidden; */
+    box-sizing: border-box;
+    position: relative;
+  }
+  #app::-webkit-scrollbar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 4px;
+    height: 4px;
+    box-sizing: border-box;
+  }
+  #app::-webkit-scrollbar-track { /* 滚动条轨道 */
+    background: #f1f1f1; 
+    width: 2px;
+    border-radius: 2em;
+  }
+  
+  #app::-webkit-scrollbar-thumb { /* 滚动条滑块 */
+    background: #888; /* 滑块颜色 */
+    border-radius: 2em;
+  }
+  
+  #app::-webkit-scrollbar-thumb:hover { /* 鼠标悬停时的滑块颜色 */
+    background: #555;
+    border-radius: 2em;
+  }

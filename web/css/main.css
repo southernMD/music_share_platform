@@ -1,0 +1,286 @@
+main{
+  /* height: 3000px; */
+  width:  var(--max-box-width);
+  background-color: rgba(2,2,2,0);
+}
+main{
+  width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto ;
+  background-color: rgba(var(--background-color),.9);
+  border-radius: var(--border-radiu-size);
+  margin-top: 80px;
+  position: relative;
+}
+main >.looking{
+  display: flex;
+  padding: 1rem;
+}
+main >.looking >.left{
+  width: 70%;
+  height: auto;
+  margin-right: 1rem;
+}
+main >.looking >.left >.top{
+  margin-bottom: 1rem;
+  border-radius:var(--border-radiu-size) ;
+  border: 1px solid rgb(233, 233, 233);
+  background-color: white;
+  height: 500px;
+}
+main >.looking >.left >.top{
+  position: relative;
+}
+main >.looking >.left >.top >.change{
+  height: 20px;
+  font-size: 12px;
+  float: right;
+}
+main >.looking >.left >.top ul{
+  height: calc(100% - 2rem - 20px);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  padding-top: 0.5rem;
+}
+
+main >.looking >.left >.top ul li{
+  flex:1 0 calc(25% - 4rem);
+  box-sizing: border-box;
+  margin: 1rem;
+  height: calc(50% - 0.5rem);
+  background-color: rgba(222, 222, 222, .8);
+  transition: all .5s;
+  transform-origin: top left;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--border-radiu-size);
+}
+main >.looking >.left >.top ul li >*{
+  margin-top: 10px;
+}
+main >.looking >.left >.top ul li >img{
+  user-select: none;
+}
+
+main >.looking >.left >.top ul li .name{
+  width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+/* ul的第45678个元素 */
+main >.looking >.left >ul >li:nth-child(6n+1)
+,main >.looking >.left >ul >li:nth-child(6n+2)
+,main >.looking >.left >ul >li:nth-child(6n+3)
+,main >.looking >.left >ul >li:nth-child(6n+4)
+,main >.looking >.left >ul >li:nth-child(6n+5)
+,main >.looking>.left >ul >li:nth-child(6n+6){
+  margin-top: 0;
+}
+main >.looking >.left >.top .change{
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+main >.looking >.left >.top ul .hide{
+  opacity: 0;
+  pointer-events: none; 
+}
+main >.looking >.left >.top li img{
+  width: 130px;
+  height: 130px;
+}
+
+main >.looking >.left >.top .message{
+  position: absolute;
+  box-sizing: border-box;
+  right: 1.5rem;
+  top: 1.5rem;
+  background-color: rgba(222, 222, 222, .8);
+  border-radius: var(--border-radiu-size);
+  width: calc(100% / 2 );
+  height: calc(100% - 2.5rem);
+  padding: 1rem;
+  overflow: hidden;
+}
+main >.looking >.left >.top .message >*{
+  margin-bottom: 0.5rem;
+}
+main >.looking >.left >.top .message:last-child{
+  margin-bottom: 0;
+}
+main >.looking >.left >.top .message >.title{
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main >.looking >.left >.top .message >.lrc{
+  line-height: 14px;
+  overflow: hidden;         /* 隐藏超出部分 */
+  text-overflow: ellipsis;  /* 显示省略号 */
+  display: -webkit-box;     /* 使用弹性盒子布局 */
+  -webkit-line-clamp: 15;    /* 兼容性处理，可选 */
+  line-clamp: 3;
+  -webkit-box-orient: vertical; /* 垂直方向布局 */
+}
+
+main >.looking >.left >.top .message >.sign{
+  line-height: 14px;
+  overflow: hidden;         /* 隐藏超出部分 */
+  text-overflow: ellipsis;  /* 显示省略号 */
+  display: -webkit-box;     /* 使用弹性盒子布局 */
+  -webkit-line-clamp: 10;    /* 兼容性处理，可选 */
+  line-clamp: 3;
+  -webkit-box-orient: vertical; /* 垂直方向布局 */
+}
+main >.looking >.left >.bottom{
+  background: none;
+  height: auto;
+}
+
+main >.looking >.left >.bottom ul{
+  width: 100%;
+}
+
+main >.looking >.left >.bottom ul li{
+  width: 100%;
+  height: 500px;
+  border-radius: var(--border-radiu-size);
+  background-color: rgb(var(--background-color));
+  margin-bottom: 1rem;
+  padding:1em;
+  box-sizing: border-box;
+}
+main >.looking >.left >.bottom ul li .message{
+  justify-content: center;
+  margin-left: 1rem;
+}
+main >.looking >.left >.bottom ul li >div{
+  padding-top: 1rem;
+}
+main >.looking >.left >.bottom ul li >.top .message >*{
+  height: 50%;
+}
+
+main >.looking >.left >.bottom ul li >.middle >*:not(:first-child){
+  padding-top: 1rem;
+}
+main >.looking >.left >.bottom ul li:last-child{
+  margin-bottom: 0;
+}
+
+main >.looking >.left >.bottom ul li >.top >img{
+  width: 2.5em;
+  height: 2.5em;
+  border-radius:2em ;
+}
+
+main >.looking >.left >.bottom ul li >.middle >img{
+  width: 100%;
+  height: 250px;
+  border-radius: var(--border-radiu-size);
+  object-fit: cover;
+  object-position: center;
+}
+
+main >.looking >.left >.bottom ul li >.middle h1{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+}
+main >.looking >.left >.bottom ul li >.middle h2{
+  display: -webkit-box; 
+  -webkit-line-clamp: 3; 
+  line-clamp: 3; 
+  -webkit-box-orient: vertical; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main >.looking >.left >.bottom ul li >.bottom >.options >a{
+  margin-right: 10px;
+  border: 2px solid rgb(233, 233, 233);
+  padding: 3px 2px;
+}
+
+main >.looking >.left >.bottom ul li >.bottom >.options .active{
+  color: #66ccff;
+}
+
+main >.looking .right {
+  width: 30%;
+  height: auto;
+}
+main >.looking .right >.top{
+  height: auto;
+  border-radius:var(--border-radiu-size) ;
+  border: 1px solid rgb(233, 233, 233);
+  background-color: white;
+}
+main >.looking .right .top >.title{
+  margin:1rem 0 0 1rem ;
+}
+main >.looking .right .top ol{
+  padding: 1rem;
+}
+main >.looking .right .top ol li{
+  margin-bottom: 15px;
+}
+main >.looking .right .top ol li >.index{
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radiu-size);
+}
+main >.looking .right .top ol li:last-child {
+  margin-bottom: 0;
+}
+
+main >.looking .right .top ol li >.index {
+  margin-right: 1rem;
+}
+main >.looking .right .top ol li {
+  display: flex;
+  align-items: center;
+}
+main >.looking .right .fixed{
+  position: fixed;
+  width: calc(360px - 2rem);
+  top: calc(60px + 1rem);
+  z-index: 32;
+
+}
+main >.looking .right .bottom-absolute{
+  position: absolute;
+  width: calc(360px - 2rem);
+  bottom: 1.25rem;
+  right: 1.25rem;
+}
+
+.to-top{
+  position: fixed;
+  height: 40px;
+  width: 40px;
+  right: 30px;
+  bottom: 30px;
+  border: 1px solid rgb(233, 233, 233);
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.to-top >div{
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  user-select: none;
+  font-size: 12px;
+}

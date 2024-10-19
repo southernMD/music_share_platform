@@ -1,0 +1,21 @@
+footer{
+    background-color: white;
+    width: calc(var(--max-box-width));
+    height: 250px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: top;
+}
+
+footer .contain{
+    width: 1200px;
+    height: auto;
+    padding: 2rem 0 1rem;
+    font-size: 14px;
+}
+
+footer .contain >*{
+    margin: 10px 0;
+    line-height: var(--default-line-height);
+}

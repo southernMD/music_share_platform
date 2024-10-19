@@ -1,0 +1,74 @@
+main {
+    background: white;
+    height: auto;
+}
+  
+  main ul{
+    width: 100%;
+    padding-top:1em ;
+  }
+  
+  main  ul li{
+    width: calc(100% - 2em);
+    height: 500px;
+    border-radius: var(--border-radiu-size);
+    background-color: rgb(233,233,233);
+    margin: 0 auto;
+    margin-top: 1em;
+    padding: 1em;
+    box-sizing: border-box;
+  }
+  main  ul li .message{
+    justify-content: center;
+    margin-left: 1rem;
+  }
+  main ul li >div{
+    padding-top: 1rem;
+  }
+  main ul li >.top .message >*{
+    height: 50%;
+  }
+  
+  main ul li >.middle >*:not(:first-child){
+    padding-top: 1rem;
+  }
+  main ul li:last-child{
+    margin-bottom: 0;
+  }
+  
+  main ul li >.top >img{
+    width: 2.5em;
+    height: 2.5em;
+    border-radius:2em ;
+  }
+  
+  main ul li >.middle >img{
+    width: 100%;
+    height: 250px;
+    border-radius: var(--border-radiu-size);
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  main ul li >.middle h1{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+  }
+  main ul li >.middle h2{
+    display: -webkit-box; 
+    -webkit-line-clamp: 3; 
+    line-clamp: 3; 
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  main ul li >.bottom >.options >a{
+    margin-right: 10px;
+    border: 2px solid rgb(233, 233, 233);
+    padding: 3px 2px;
+  }
+main ul li >.bottom >.options .active{
+  color: #66ccff;
+}
