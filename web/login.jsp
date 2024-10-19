@@ -10,11 +10,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="${pageContext.request.contextPath}/public/favicon.ico" />
     <title>登录-注册</title>
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/login2.css">
-    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login2.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/button.css">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
         <!-- 登录 -->
         <div class="left Login maskState-left">
             <H2 class="title">欢迎登录</H2>
-            <form action="/api/login" method="post">
+            <form action="${pageContext.request.contextPath}/api/login" method="post">
                 <input name="username" placeholder="用户名"></input>
                 <input type="password" name="password" placeholder="密码"></input>
                 <button class="reg-right-button ripple" type="submit">登录</button>
@@ -41,7 +41,7 @@
         <!-- 注册 -->
         <div class="right Reg maskState-right">
             <H2 class="title">注册</H2>
-            <form action="/api/reg" method="post">
+            <form action="${pageContext.request.contextPath}/api/reg" method="post">
                 <input name="username"  placeholder="请输入6-12位账号"></input>
                 <input name="password1" type="password" placeholder="请输入密码" ></input>
                 <input name="password2" type="password" placeholder="确认密码" ></input>
@@ -50,7 +50,7 @@
         </div>
     </div>
 </div>
-<script src="/js/login.js"></script>
+<script src="${pageContext.request.contextPath}/js/login.js"></script>
 </body>
 
 </html>

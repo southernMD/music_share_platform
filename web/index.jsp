@@ -26,8 +26,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
     <title>首页</title>
 </head>
 
@@ -138,7 +138,7 @@
                                 <div class="top" flex flex-row>
                                     <img src="${showDiscuss.publicer_avatar}" alt="">
                                     <div flex flex-column class="message">
-                                        <a href="/user/index.jsp?id=${showDiscuss.publicer_id}">${showDiscuss.publicer_name}</a>
+                                        <a href="${pageContext.request.contextPath}/user/index.jsp?id=${showDiscuss.publicer_id}">${showDiscuss.publicer_name}</a>
                                         <p small class="time">${showDiscuss.discuss_time}</p>
                                     </div>
                                 </div>
@@ -150,14 +150,14 @@
                                     <h2 small>
                                         ${showDiscuss.discuss_main}
                                     </h2>
-                                    <a blue href="/discuss/detail.jsp?id=${showDiscuss.id}" small>阅读更多</a>
+                                    <a blue href="${pageContext.request.contextPath}/discuss/detail.jsp?id=${showDiscuss.id}" small>阅读更多</a>
                                 </div>
                                 <div class="bottom" flex flex-column>
                                     <div class="options" flex small>
                                         <a class='${showDiscuss.isLike == 1?'active':''}'
-                                           href="/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isLike != 1?1:3}&path=<%=request.getRequestURI()%>">点赞&nbsp;${showDiscuss.like_number}</a>
+                                           href="${pageContext.request.contextPath}/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isLike != 1?1:3}&path=<%=request.getRequestURI()%>">点赞&nbsp;${showDiscuss.like_number}</a>
                                         <a class='${showDiscuss.isDislike == 1?'active':''}'
-                                           href="/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isDislike != 1?2:4}&path=<%=request.getRequestURI()%>">点踩&nbsp;${showDiscuss.dislike_number}</a>
+                                           href="${pageContext.request.contextPath}/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isDislike != 1?2:4}&path=<%=request.getRequestURI()%>">点踩&nbsp;${showDiscuss.dislike_number}</a>
                                         <a >评论&nbsp;${showDiscuss.comment_number}</a>
                                     </div>
                                 </div>
@@ -175,7 +175,7 @@
                         <c:forEach items="${orderSongs}" var="song" varStatus="status">
                             <li>
                                 <div class="index" small>${status.index+1}</div>
-                                <a href="/music/detail.jsp?id=${song.id}">${song.ar_name} - ${song.song_name}</a>
+                                <a href="${pageContext.request.contextPath}/music/detail.jsp?id=${song.id}">${song.ar_name} - ${song.song_name}</a>
                             </li>
                         </c:forEach>
                     </ol>
@@ -187,6 +187,6 @@
     <jsp:include page="/template/footer.jsp" />
     <jsp:include page="/template/toTop.jsp"/>
 </div>
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 </html>

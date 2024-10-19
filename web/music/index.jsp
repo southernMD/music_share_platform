@@ -14,12 +14,11 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/music.css">
-  <link rel="stylesheet" href="/css/index.css">
+  <link rel="icon" type="image/svg+xml" href="${pageContext.request.contextPath}/public/favicon.ico" />
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/music.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
   <title>音乐</title>
 </head>
 
@@ -76,7 +75,7 @@
         <div class="search">
           <div class="input-bg">
             <input type="text" placeholder="输入" id="search-input" value="${search}">
-            <a id="search-a" href="/api/search/songs" small>搜索</a>
+            <a id="search-a" href="${pageContext.request.contextPath}/api/search/songs" small>搜索</a>
           </div>
         </div>
         <c:if test="${search.trim().length()!=0}">
@@ -87,7 +86,7 @@
         <ul>
           <c:forEach items="${searchSongs == null?songs:searchSongs}" var="song">
             <li>
-              <a href="/music/detail.jsp?id=${song.id}">
+              <a href="${pageContext.request.contextPath}/music/detail.jsp?id=${song.id}">
                 <img src="${song.song_img}" alt="">
                 <div class="message">
                   <div class="title" strong big>${song.song_name}</div>
@@ -114,7 +113,7 @@
             <div class="message" big strong>
               没有找到你所搜索的结果，或许你可以尝试自己去发布
             </div>
-            <a href="/user/index.jsp?id=${user == null ?0:user.id}" data-type="${user == null ?0:1}" strong blue>发布音乐</a>
+            <a href="${pageContext.request.contextPath}/user/index.jsp?id=${user == null ?0:user.id}" data-type="${user == null ?0:1}" strong blue>发布音乐</a>
           </div>
         </c:if>
         <div class="pagination" id="pagination">
@@ -128,8 +127,8 @@
     <jsp:include page="/template/toTop.jsp"/>
 
   </div>
-  <script type="module" src="/js/main.js"></script>
-  <script type="module" src="/js/pagination.js"></script>
+  <script type="module" src="${pageContext.request.contextPath}/js/main.js"></script>
+  <script type="module" src="${pageContext.request.contextPath}/js/pagination.js"></script>
 </body>
 <script>
   const search_a = document.querySelector("#search-a");

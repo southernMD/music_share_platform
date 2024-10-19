@@ -11,8 +11,8 @@
 
 <header>
     <div class="header-box">
-        <a href="/">
-            <img src="/public/images/logo.png" alt="" draggable="false">
+        <a href="${pageContext.request.contextPath}/">
+            <img src="${pageContext.request.contextPath}/public/images/logo.png" alt="" draggable="false">
         </a>
         <ul>
             <li
@@ -27,14 +27,14 @@
                     class="active"
                 </c:if>
             >
-                <a href="/music/index.jsp">音乐</a>
+                <a href="${pageContext.request.contextPath}/music/index.jsp">音乐</a>
             </li>
             <li
                 <c:if test='${active == "discuss"}'>
                     class="active"
                 </c:if>
             >
-                <a href="/api/discuss/list?currentPage=1">讨论</a>
+                <a href="${pageContext.request.contextPath}/api/discuss/list?currentPage=1">讨论</a>
             </li>
         </ul>
 
@@ -44,9 +44,9 @@
                      hidden
                  </c:if>
             >
-                <a href="/login.jsp?way=login">登录</a>
+                <a href="${pageContext.request.contextPath}/login.jsp?way=login">登录</a>
                 <p>/</p>
-                <a href="/login.jsp?way=register">注册</a>
+                <a href="${pageContext.request.contextPath}/login.jsp?way=register">注册</a>
             </div>
             <div class="logined"
                 <c:if test='${user==null}'>
@@ -55,10 +55,10 @@
             >
                 <img src="${user.avatar}" alt="">
                 <div class="user-name">
-                    <a href="/user/index.jsp?id=${user.id}">${user.username}</a>
+                    <a href="${pageContext.request.contextPath}/user/index.jsp?id=${user.id}">${user.username}</a>
                 </div>
                 <div class="login-out">
-                    <a href="/api/quit">退出</a>
+                    <a href="${pageContext.request.contextPath}/api/quit">退出</a>
                 </div>
             </div>
         </div>

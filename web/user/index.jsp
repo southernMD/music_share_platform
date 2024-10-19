@@ -69,11 +69,11 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人中心</title>
-    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="${pageContext.request.contextPath}/public/favicon.ico" />
     <!-- <link rel="stylesheet" href="/css/app.css"> -->
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/user.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user.css">
 
 </head>
 
@@ -82,7 +82,7 @@ try {
         <jsp:include page="/template/header.jsp"/>
         <main>
             <section class="profile">
-                <form action="/api/change/user" method="post"  enctype="multipart/form-data">
+                <form action="${pageContext.request.contextPath}/api/change/user" method="post"  enctype="multipart/form-data">
                     <input name="id" hidden value="${user.id}">
                     <div class="avatar">
                         <img id="user-img" src="${user.avatar}" alt="用户头像">
@@ -111,7 +111,7 @@ try {
                 <ul id="published-music-ul">
                     <c:forEach items="${songs}" var="song">
                         <li>
-                            <form action="/api/update/songs?id=${song.id}" method="post" enctype="multipart/form-data">
+                            <form action="${pageContext.request.contextPath}/api/update/songs?id=${song.id}" method="post" enctype="multipart/form-data">
                                 <div class="music-item">
                                     <input type="file" name="song_img" hidden value="${song.song_img}"/>
                                     <img class="song_img" src="${song.song_img}" alt="音乐封面"/>
@@ -150,12 +150,12 @@ try {
                     </c:forEach>
                     <c:if test="${login_user != null && login_user.id == user.id}">
                         <li>
-                            <form action="/api/send/music" method="post" enctype="multipart/form-data">
+                            <form action="${pageContext.request.contextPath}/api/send/music" method="post" enctype="multipart/form-data">
                                 <div class="music-item">
                                     <div class="song_img song_img_div" >+</div>
                                     <div class="music-item" hidden>
                                         <input type="file" name="song_img" hidden>
-                                        <img class="song_img song_add_img" style="cursor: pointer;" src="/public/images/image.jpg" alt="音乐封面">
+                                        <img class="song_img song_add_img" style="cursor: pointer;" src="${pageContext.request.contextPath}/public/images/image.jpg" alt="音乐封面">
                                         <div class="music-details" style="width: 150px">
                                             <input placeholder="歌名"  name="song_name" type="text" value="">
                                             <input placeholder="歌手"  name="ar_name" type="text" value="">
@@ -183,7 +183,7 @@ try {
                 <ul id="topics-ul">
                     <c:forEach items="${discusses}" var="discuss">
                         <li>
-                            <form action="/api/update/discuss?id=${discuss.id}"  method="post" enctype="multipart/form-data">
+                            <form action="${pageContext.request.contextPath}/api/update/discuss?id=${discuss.id}"  method="post" enctype="multipart/form-data">
                                 <div class="topic-item">
                                     <input name="discuss_img" type="file" hidden>
                                     <img class="topics_img" src="${discuss.discuss_img}" alt="话题图片">
@@ -208,12 +208,12 @@ try {
                     </c:forEach>
                     <c:if test="${login_user != null && login_user.id == user.id}">
                         <li>
-                        <form action="/api/send/discuss"  method="post" enctype="multipart/form-data">
+                        <form action="${pageContext.request.contextPath}/api/send/discuss"  method="post" enctype="multipart/form-data">
                             <div class="topic-item">
                                 <div class="topics_img topic_img_div" >+</div>
                                 <div class="topic-item" hidden>
                                     <input name="topics_img" type="file" hidden>
-                                    <img class="topics_img topics_add_img"  style="cursor: pointer;"  src="/public/images/image.jpg" alt="话题图片">
+                                    <img class="topics_img topics_add_img"  style="cursor: pointer;"  src="${pageContext.request.contextPath}/public/images/image.jpg" alt="话题图片">
                                     <div class="topic-details topic-details-add ">
                                         <input name="title" type="text" placeholder="话题标题" >
                                         <textarea placeholder="话题内容" name="txt"   cols="20" rows="8" ></textarea>
@@ -236,8 +236,8 @@ try {
         <jsp:include page="/template/toTop.jsp"/>
     </div>
 
-    <script src="/js/main.js" type="module"></script>
-    <script src="/js/uesr.js" type="module"></script>
+    <script src="${pageContext.request.contextPath}/js/main.js" type="module"></script>
+    <script src="${pageContext.request.contextPath}/js/uesr.js" type="module"></script>
 </body>
 
 </html>

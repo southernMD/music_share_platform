@@ -87,10 +87,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>讨论-${showDiscuss.title}</title>
-    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/discuss_detail.css">
+    <link rel="icon" type="image/svg+xml" href="${pageContext.request.contextPath}/public/favicon.ico" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/discuss_detail.css">
 </head>
 
 <body>
@@ -117,15 +117,15 @@
                 <div class="bottom">
                     <div class="options" small>
                         <a class='${showDiscuss.isLike == 1?'active':''}'
-                           href="/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isLike != 1?1:3}&path=<%=request.getRequestURI()%>">点赞&nbsp;${showDiscuss.like_number}</a>
+                           href="${pageContext.request.contextPath}/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isLike != 1?1:3}&path=<%=request.getRequestURI()%>">点赞&nbsp;${showDiscuss.like_number}</a>
                         <a class='${showDiscuss.isDislike == 1?'active':''}'
-                           href="/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isDislike != 1?2:4}&path=<%=request.getRequestURI()%>">点踩&nbsp;${showDiscuss.dislike_number}</a>
+                           href="${pageContext.request.contextPath}/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isDislike != 1?2:4}&path=<%=request.getRequestURI()%>">点踩&nbsp;${showDiscuss.dislike_number}</a>
                         <a >评论&nbsp;${showDiscuss.comment_number}</a>
                     </div>
                 </div>
             </div>
             <div class="writer-comment">
-                <form action="/send/discuss/comment" method="post">
+                <form action="${pageContext.request.contextPath}/send/discuss/comment" method="post">
                     <div class="title" big>写评论</div>
                     <input name="discuss_id" value="${showDiscuss.id}" hidden>
                     <textarea name="textarea" id="" cols="30" rows="10" placeholder="请输入评论内容"></textarea>
@@ -140,7 +140,7 @@
                         <div class="top" flex flex-row>
                             <img src="${comment.avatar}" alt=""></img>
                             <div flex flex-column class="message">
-                                <a href="/user/index.jsp?id=${comment.user_id}">${comment.user_name}</a>
+                                <a href="${pageContext.request.contextPath}/user/index.jsp?id=${comment.user_id}">${comment.user_name}</a>
                             </div>
                             <div class="time" small style="margin-left: 5px;">${comment.comment_time}</div>
                         </div>
@@ -151,7 +151,7 @@
                             <div class="like" small>
                                 <a
                                     class='${comment.isLike == 1?'active':''}'
-                                    href="/api/comment?id=${comment.id}&type=${comment.isLike==1?2:1}&discuss_id=${showDiscuss.id}#c_${status.index}">点赞(${comment.comment_like_number})</a>
+                                    href="${pageContext.request.contextPath}/api/comment?id=${comment.id}&type=${comment.isLike==1?2:1}&discuss_id=${showDiscuss.id}#c_${status.index}">点赞(${comment.comment_like_number})</a>
                             </div>
                         </div>
                     </li>
@@ -165,7 +165,7 @@
         <jsp:include page="/template/footer.jsp"/>
         <jsp:include page="/template/toTop.jsp"/>
     </div>
-    <script type="module" src="/js/main.js" async></script>
+    <script type="module" src="${pageContext.request.contextPath}/js/main.js" async></script>
 </body>
 
 </html>

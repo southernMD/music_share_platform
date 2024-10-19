@@ -20,11 +20,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>讨论</title>
-    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/discuss.css">
-    <link rel="stylesheet" href="/css/pagination.css">
+    <link rel="icon" type="image/svg+xml" href="${pageContext.request.contextPath}/public/favicon.ico" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/discuss.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pagination.css">
 </head>
 
 <%
@@ -60,7 +60,7 @@
                 <div class="top" flex flex-row>
                     <img src="${discuss.publicer_avatar}" alt="">
                     <div flex flex-column class="message">
-                        <a href="/user/index.jsp?id=${discuss.publicer_id}">${discuss.publicer_name}</a>
+                        <a href="${pageContext.request.contextPath}/user/index.jsp?id=${discuss.publicer_id}">${discuss.publicer_name}</a>
                         <p small class="time">${discuss.discuss_time}</p>
                     </div>
                 </div>
@@ -72,14 +72,14 @@
                     <h2 small>
                         ${discuss.discuss_main}
                     </h2>
-                    <a blue href="/discuss/detail.jsp?id=${discuss.id}" small>阅读更多</a>
+                    <a blue href="${pageContext.request.contextPath}/discuss/detail.jsp?id=${discuss.id}" small>阅读更多</a>
                 </div>
                 <div class="bottom" flex flex-column>
                     <div class="options" flex small>
                         <a class='${discuss.isLike == 1?'active':''}'
-                           href="/api/discuss/op?id=${discuss.id}&type=${discuss.isLike != 1?1:3}&path=/api/discuss/list">点赞&nbsp;${discuss.like_number}</a>
+                           href="${pageContext.request.contextPath}/api/discuss/op?id=${discuss.id}&type=${discuss.isLike != 1?1:3}&path=/api/discuss/list">点赞&nbsp;${discuss.like_number}</a>
                         <a class='${discuss.isDislike == 1?'active':''}'
-                           href="/api/discuss/op?id=${discuss.id}&type=${discuss.isDislike != 1?2:4}&path=/api/discuss/list">点踩&nbsp;${discuss.dislike_number}</a>
+                           href="${pageContext.request.contextPath}/api/discuss/op?id=${discuss.id}&type=${discuss.isDislike != 1?2:4}&path=/api/discuss/list">点踩&nbsp;${discuss.dislike_number}</a>
                         <a >评论&nbsp;${discuss.comment_number}</a>
                     </div>
                 </div>
@@ -123,8 +123,8 @@
     })
 
 </script>
-<script type="module" src="/js/main.js" async></script>
-<script type="module" src="/js/pagination.js"></script>
+<script type="module" src="${pageContext.request.contextPath}/js/main.js" async></script>
+<script type="module" src="${pageContext.request.contextPath}/js/pagination.js"></script>
 </body>
 
 </html>

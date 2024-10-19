@@ -10,7 +10,7 @@
 <%@ page isErrorPage="true" %>
 <html>
 <head>
-    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="${pageContext.request.contextPath}/public/favicon.ico" />
     <title>错误</title>
 </head>
 <body>

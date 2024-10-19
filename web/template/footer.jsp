@@ -2,7 +2,7 @@
 <footer>
     <div class="contain">
         <div class="top">
-            <a href="javascript:;">
+            <a href="${pageContext.request.contextPath}/">
                 <img src="${pageContext.request.contextPath}/public/images/logo.png" alt=""></img>
             </a>
         </div>

@@ -44,10 +44,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="${pageContext.request.contextPath}/public/favicon.ico" />
     <title>音乐-${song.song_name}</title>
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
     <style>
         /* styles.css */
         main{
@@ -187,7 +187,7 @@
                 <div class="message">
                     <div class="publisher-info">
                         <img src="${publisher.avatar}" alt="发布者头像">
-                        <a href="/user/index.jsp?id=${publisher.id}" class="publisher-name">${publisher.username}</a>
+                        <a href="${pageContext.request.contextPath}/user/index.jsp?id=${publisher.id}" class="publisher-name">${publisher.username}</a>
                     </div>
                     <div class="publisher-description">
                        ${song.song_des}
@@ -198,7 +198,7 @@
         <jsp:include page="/template/footer.jsp" />
         <jsp:include page="/template/toTop.jsp"/>
     </div>
-    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
 
 </html>
