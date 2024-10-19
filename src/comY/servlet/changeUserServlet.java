@@ -35,10 +35,10 @@ public class changeUserServlet extends HttpServlet {
             Part part = req.getPart("avatar");
             String path = getServletContext().getRealPath("/");
             avatar = changeUserDao.saveFile(part, path,id);
-            System.out.println(avatar);
-            User user = changeUserDao.changeUser( id,username, description, avatar).getFirst();
+            User user = changeUserDao.changeUser(id, username, description, avatar).getFirst();
             req.getSession().setAttribute("user", user);
-            res.sendRedirect("/user/index.jsp");
+            System.out.println(avatar);
+            req.getRequestDispatcher("/user/index.jsp").forward(req, res);
         }catch (Exception e){
             req.setAttribute("error", e.toString());
             req.getRequestDispatcher("/error.jsp").forward(req, res);

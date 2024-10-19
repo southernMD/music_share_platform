@@ -29,7 +29,7 @@ public class sendDiscussServlet extends HttpServlet {
             String txt = req.getParameter("txt");
             Integer user_id = req.getSession().getAttribute("user") == null ? null : ((User) (req.getSession().getAttribute("user"))).getId();
             if(user_id == null){
-                res.sendRedirect("/login.jsp?way=login");
+                res.sendRedirect(req.getContextPath()+"/login.jsp?way=login");
                 return;
             }
             checkEmpty.emptyList(title,txt);
@@ -37,7 +37,7 @@ public class sendDiscussServlet extends HttpServlet {
             String path = getServletContext().getRealPath("/");
             String img_url = getSaveFilePath.saveFile(part, path,"/public/images/image.jpg");
             sendDiscussDao.sendDiscuss(title,txt,user_id,img_url);
-            res.sendRedirect("/user/index.jsp?id="+user_id);
+            res.sendRedirect(req.getContextPath()+"/user/index.jsp?id="+user_id);
         } catch (Exception e) {
             req.setAttribute("error", e.toString());
             req.getRequestDispatcher("/error.jsp").forward(req, res);

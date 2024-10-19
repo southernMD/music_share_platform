@@ -28,7 +28,7 @@ public class updateDiscussServlet extends HttpServlet {
         try{
             Integer publicer_id = req.getSession().getAttribute("user") == null ? null : ((User) (req.getSession().getAttribute("user"))).getId();
             if (publicer_id == null) {
-                res.sendRedirect("/login.jsp?way=login");
+                res.sendRedirect(req.getContextPath()+"/login.jsp?way=login");
                 return;
             }
             String title = req.getParameter("title");
@@ -40,7 +40,7 @@ public class updateDiscussServlet extends HttpServlet {
             String path = getServletContext().getRealPath("/");
             String discuss_img = getSaveFilePath.saveFile(part, path, "/public/images/image.jpg");
             updateDiscussDao.updateDiscuss(Integer.parseInt(id),title,discuss_img,discuss_main,publicer_id);
-            res.sendRedirect("/user/index.jsp?id="+publicer_id);
+            res.sendRedirect(req.getContextPath()+"/user/index.jsp?id="+publicer_id);
         }catch (Exception e){
                 System.out.println(e);
                 req.setAttribute("error", e.toString());

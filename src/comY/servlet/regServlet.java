@@ -38,13 +38,13 @@ public class regServlet extends HttpServlet {
                     HttpSession session = req.getSession();
                     if (session != null && session.getAttribute("username") != null) {
                         // 用户已登录
-                        res.sendRedirect("/");
+                        res.sendRedirect(req.getContextPath()+"/");
                     } else {
                         // 用户未登录
                         req.getSession().setAttribute("user",sessionUserMessage);
                         //过期时间设置为2天
                         req.getSession().setMaxInactiveInterval(60 * 60 * 24 * 2);
-                        res.sendRedirect("/");
+                        res.sendRedirect(req.getContextPath()+"/");
                     }
                 } catch (SQLException e) {
                     req.setAttribute("error", e.toString());

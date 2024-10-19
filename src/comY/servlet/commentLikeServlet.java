@@ -25,7 +25,7 @@ public class commentLikeServlet extends HttpServlet {
             String type = req.getParameter("type");
             User user = (User) req.getSession().getAttribute("user");
             if (user == null) {
-                res.sendRedirect("/login.jsp?way=login");
+                res.sendRedirect(req.getContextPath()+"/login.jsp?way=login");
                 return;
             }
             checkEmpty.emptyList(id, type);
@@ -33,7 +33,7 @@ public class commentLikeServlet extends HttpServlet {
            else if(type.equals("2")){commentLikeDao.unLike(Integer.parseInt(id), user.getId());}
             //#后参数
             String anchor = getAnchor.getAnchorHandler(req);
-            res.sendRedirect("/discuss/detail.jsp?id="+discuss_id+anchor);
+            res.sendRedirect(req.getContextPath()+"/discuss/detail.jsp?id="+discuss_id+anchor);
         } catch (Exception e) {
             req.setAttribute("error", e.toString());
             req.getRequestDispatcher("/error.jsp").forward(req, res);

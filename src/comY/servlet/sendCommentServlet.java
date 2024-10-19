@@ -27,11 +27,11 @@ public class sendCommentServlet extends HttpServlet {
             }
             int discuss_id = Integer.parseInt(req.getParameter("discuss_id"));
             if (user_Id == null) {
-                res.sendRedirect("/login.jsp?way=login");
+                res.sendRedirect(req.getContextPath()+"/login.jsp?way=login");
                 return;
             }
             if(sendCommentDao.sendComment(discuss_id, user_Id,textarea)!=1)throw new Exception("评论失败");
-            res.sendRedirect("/discuss/detail.jsp?id="+discuss_id);
+            res.sendRedirect(req.getContextPath()+"/discuss/detail.jsp?id="+discuss_id);
         }
         catch (Exception e){
             req.setAttribute("error", e.toString());

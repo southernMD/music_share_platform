@@ -117,9 +117,9 @@
                 <div class="bottom">
                     <div class="options" small>
                         <a class='${showDiscuss.isLike == 1?'active':''}'
-                           href="${pageContext.request.contextPath}/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isLike != 1?1:3}&path=<%=request.getRequestURI()%>">点赞&nbsp;${showDiscuss.like_number}</a>
+                           href="${pageContext.request.contextPath}/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isLike != 1?1:3}&path=<%=request.getContextPath()+request.getRequestURI()%>">点赞&nbsp;${showDiscuss.like_number}</a>
                         <a class='${showDiscuss.isDislike == 1?'active':''}'
-                           href="${pageContext.request.contextPath}/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isDislike != 1?2:4}&path=<%=request.getRequestURI()%>">点踩&nbsp;${showDiscuss.dislike_number}</a>
+                           href="${pageContext.request.contextPath}/api/discuss/op?id=${showDiscuss.id}&type=${showDiscuss.isDislike != 1?2:4}&path=<%=request.getContextPath()+request.getRequestURI()%>">点踩&nbsp;${showDiscuss.dislike_number}</a>
                         <a >评论&nbsp;${showDiscuss.comment_number}</a>
                     </div>
                 </div>

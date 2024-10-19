@@ -25,7 +25,7 @@ public class userDiscussOperateServlet extends HttpServlet {
             int id = Integer.parseInt(req.getParameter("id"));
             Integer user_id = req.getSession().getAttribute("user") == null ? null : ((User) (req.getSession().getAttribute("user"))).getId();
             if (user_id == null) {
-                res.sendRedirect("/login.jsp?way=login");
+                res.sendRedirect(req.getContextPath()+"/login.jsp?way=login");
                 return;
             }
             if (operate.equals("1")) {

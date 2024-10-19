@@ -77,9 +77,9 @@
                 <div class="bottom" flex flex-column>
                     <div class="options" flex small>
                         <a class='${discuss.isLike == 1?'active':''}'
-                           href="${pageContext.request.contextPath}/api/discuss/op?id=${discuss.id}&type=${discuss.isLike != 1?1:3}&path=/api/discuss/list">点赞&nbsp;${discuss.like_number}</a>
+                           href="${pageContext.request.contextPath}/api/discuss/op?id=${discuss.id}&type=${discuss.isLike != 1?1:3}&path=${pageContext.request.contextPath}/api/discuss/list">点赞&nbsp;${discuss.like_number}</a>
                         <a class='${discuss.isDislike == 1?'active':''}'
-                           href="${pageContext.request.contextPath}/api/discuss/op?id=${discuss.id}&type=${discuss.isDislike != 1?2:4}&path=/api/discuss/list">点踩&nbsp;${discuss.dislike_number}</a>
+                           href="${pageContext.request.contextPath}/api/discuss/op?id=${discuss.id}&type=${discuss.isDislike != 1?2:4}&path=${pageContext.request.contextPath}/api/discuss/list">点踩&nbsp;${discuss.dislike_number}</a>
                         <a >评论&nbsp;${discuss.comment_number}</a>
                     </div>
                 </div>

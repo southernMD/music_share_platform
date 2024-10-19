@@ -9,6 +9,6 @@ public class quitServlet extends HttpServlet {
     @Override
     protected void doGet(javax.servlet.http.HttpServletRequest req, javax.servlet.http.HttpServletResponse resp) throws javax.servlet.ServletException, java.io.IOException {
         req.getSession().removeAttribute("user");
-        resp.sendRedirect("/");
+        resp.sendRedirect(req.getContextPath()+"/");
     }
 }

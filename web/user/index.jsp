@@ -9,6 +9,22 @@
 <%@ page import="comY.entity.Song" %>
 <%@ page import="java.util.List" %>
 <%@ page import="comY.entity.Discuss" %>
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心</title>
+    <link rel="icon" type="image/svg+xml" href="${pageContext.request.contextPath}/public/favicon.ico" />
+    <!-- <link rel="stylesheet" href="/css/app.css"> -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user.css">
+
+</head>
 <c:set var="active" value='${pageContext.request.getParameter("active")}' />
 <%
     User login_user = (User) pageContext.getSession().getAttribute("user");
@@ -45,38 +61,22 @@
     }
 %>
 <%
-try {
-    Connection conn = connectMysql.getConnection();
-    String sql = "SELECT * from discuss where publicer_id = ?";
-    PreparedStatement ptmt = conn.prepareStatement(sql);
-    ptmt.setInt(1, ((User) request.getAttribute("user")).getId());
-    ResultSet rs =  ptmt.executeQuery();
-    List<Discuss> discusses = connectMysql.queryToArrayList(rs, Discuss.userAllMessageExtractor);
-    request.setAttribute("discusses",discusses);
+    try {
+        Connection conn = connectMysql.getConnection();
+        String sql = "SELECT * from discuss where publicer_id = ?";
+        PreparedStatement ptmt = conn.prepareStatement(sql);
+        ptmt.setInt(1, ((User) request.getAttribute("user")).getId());
+        ResultSet rs =  ptmt.executeQuery();
+        List<Discuss> discusses = connectMysql.queryToArrayList(rs, Discuss.userAllMessageExtractor);
+        request.setAttribute("discusses",discusses);
 
-}catch (SQLException e) {
-    request.setAttribute("error", e.toString());
-    request.getRequestDispatcher("/error.jsp").forward(request, response);
-}
+    }catch (SQLException e) {
+        request.setAttribute("error", e.toString());
+        request.getRequestDispatcher("/error.jsp").forward(request, response);
+    }
 %>
 <c:set var="user" value='<%= (User) request.getAttribute("user") %>'/>
 <c:set var="login_user" value="<%= login_user %>"/>
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人中心</title>
-    <link rel="icon" type="image/svg+xml" href="${pageContext.request.contextPath}/public/favicon.ico" />
-    <!-- <link rel="stylesheet" href="/css/app.css"> -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user.css">
-
-</head>
-
 <body>
     <div id="app">
         <jsp:include page="/template/header.jsp"/>

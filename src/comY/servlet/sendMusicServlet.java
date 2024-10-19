@@ -36,7 +36,7 @@ public class sendMusicServlet extends HttpServlet {
             String song_des = req.getParameter("song_des");
             Integer user_id = req.getSession().getAttribute("user") == null ? null : ((User) (req.getSession().getAttribute("user"))).getId();
             if(user_id == null){
-                res.sendRedirect("/login.jsp?way=login");
+                res.sendRedirect(req.getContextPath()+"/login.jsp?way=login");
                 return;
             }
             checkEmpty.emptyList(song_name,ar_name,song_url,song_lrc,song_des);
@@ -45,7 +45,7 @@ public class sendMusicServlet extends HttpServlet {
             String path = getServletContext().getRealPath("/");
             img_url = getSaveFilePath.saveFile(part, path,"/public/images/image.jpg");
             sendMusicDao.sendMusic(song_name,ar_name,song_url,song_lrc,song_des,img_url,user_id);
-            res.sendRedirect("/user/index.jsp?id="+user_id);
+            res.sendRedirect(req.getContextPath()+"/user/index.jsp?id="+user_id);
         }catch (Exception e){
             System.out.println(e);
             req.setAttribute("error", e.toString());

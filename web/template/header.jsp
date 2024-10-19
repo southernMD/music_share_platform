@@ -20,7 +20,7 @@
                 class="active"
             </c:if>
             >
-                <a href="/">首页</a>
+                <a href="${pageContext.request.contextPath}/">首页</a>
             </li>
             <li
                 <c:if test='${active == "music"}'>
