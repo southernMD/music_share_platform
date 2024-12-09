@@ -17,15 +17,12 @@ public class ErrorPageFilter implements Filter {
             httpRes.sendRedirect(httpReq.getContextPath() + "/index.jsp");
             return;
         }
-
-        // 继续处理请求
         chain.doFilter(req, res);
     }
     private boolean isForwardOrRedirect(HttpServletRequest request) {
         // 检查请求是否来自转发或重定向
         String requestUri = request.getRequestURI();
         String contextPath = request.getContextPath();
-        String servletPath = request.getServletPath();
 
         // 检查是否是/error.jsp
         if ("/error.jsp".equals(requestUri.substring(contextPath.length()))) {

@@ -38,7 +38,7 @@ public class changeUserServlet extends HttpServlet {
             User user = changeUserDao.changeUser(id, username, description, avatar).getFirst();
             req.getSession().setAttribute("user", user);
             System.out.println(avatar);
-            req.getRequestDispatcher("/user/index.jsp").forward(req, res);
+            req.getRequestDispatcher("/user/index").forward(req, res);
         }catch (Exception e){
             req.setAttribute("error", e.toString());
             req.getRequestDispatcher("/error.jsp").forward(req, res);

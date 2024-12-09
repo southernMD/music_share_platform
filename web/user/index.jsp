@@ -1,11 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="comY.entity.User" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="comY.util.connectMysql" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="comY.entity.Song" %>
 <%@ page import="java.util.List" %>
 <%@ page import="comY.entity.Discuss" %>
@@ -26,60 +21,14 @@
 
 </head>
 <c:set var="active" value='${pageContext.request.getParameter("active")}' />
-<%
-    User login_user = (User) pageContext.getSession().getAttribute("user");
-    Boolean checkFlag  = request.getParameter("id") != null && !request.getParameter("id").isEmpty() && !request.getParameter("id").matches("\\d+");
-    int id = checkFlag?-1:Integer.parseInt(request.getParameter("id"));
-    try {
-        Connection conn = connectMysql.getConnection();
-        String sql = "SELECT id,user_name,avatar,des from user where id = ?";
-        PreparedStatement ptmt = conn.prepareStatement(sql);
-        ptmt.setInt(1, id);
-        ResultSet rs =  ptmt.executeQuery();
-        List<User> users = connectMysql.queryToArrayList(rs, User.userBaseExtractor);
-        if(users.isEmpty()){
-            throw new SQLException("用户不存在");
-        }
-        request.setAttribute("user",users.getFirst());
-    }catch (SQLException e){
-        request.setAttribute("error", e.toString());
-        request.getRequestDispatcher("/error.jsp").forward(request, response);
-    }
-%>
-<%
-    try {
-        Connection conn = connectMysql.getConnection();
-        String sql = "SELECT * from songs where user_id = ?";
-        PreparedStatement ptmt = conn.prepareStatement(sql);
-        ptmt.setInt(1, ((User) request.getAttribute("user")).getId());
-        ResultSet rs =  ptmt.executeQuery();
-        List<Song> songs = connectMysql.queryToArrayList(rs, Song.userAllMessageExtractor);
-        request.setAttribute("songs",songs);
-    } catch (SQLException e) {
-        request.setAttribute("error", e.toString());
-        request.getRequestDispatcher("/error.jsp").forward(request, response);
-    }
-%>
-<%
-    try {
-        Connection conn = connectMysql.getConnection();
-        String sql = "SELECT * from discuss where publicer_id = ?";
-        PreparedStatement ptmt = conn.prepareStatement(sql);
-        ptmt.setInt(1, ((User) request.getAttribute("user")).getId());
-        ResultSet rs =  ptmt.executeQuery();
-        List<Discuss> discusses = connectMysql.queryToArrayList(rs, Discuss.userAllMessageExtractor);
-        request.setAttribute("discusses",discusses);
-
-    }catch (SQLException e) {
-        request.setAttribute("error", e.toString());
-        request.getRequestDispatcher("/error.jsp").forward(request, response);
-    }
-%>
 <c:set var="user" value='<%= (User) request.getAttribute("user") %>'/>
-<c:set var="login_user" value="<%= login_user %>"/>
+<c:set var="login_user" value='<%= (User) pageContext.getSession().getAttribute("user") %>'/>
+
+<c:set var="songs" value='<%= (List<Song>) request.getAttribute("songs") %>'/>
+<c:set var="discusses" value='<%= (List<Discuss>) request.getAttribute("discusses") %>'/>
 <body>
     <div id="app">
-        <jsp:include page="/template/header.jsp"/>
+        <jsp:include page="/layout/header.jsp"/>
         <main>
             <section class="profile">
                 <form action="${pageContext.request.contextPath}/api/change/user" method="post"  enctype="multipart/form-data">
@@ -126,7 +75,7 @@
                                     <div class="lrc">
                                         <textarea hidden name="lrc"  cols="20" rows="10">
                                             ${song.lrc}
-                                    </textarea>
+                                        </textarea>
                                         <div class="txt" small>
                                             ${song.lrc}
                                         </div>
@@ -232,8 +181,8 @@
                 </ul>
             </section>
         </main>
-        <jsp:include page="/template/footer.jsp" />
-        <jsp:include page="/template/toTop.jsp"/>
+        <jsp:include page="/layout/footer.jsp" />
+        <jsp:include page="/layout/toTop.jsp"/>
     </div>
 
     <script src="${pageContext.request.contextPath}/js/main.js" type="module"></script>

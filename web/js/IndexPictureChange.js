@@ -44,7 +44,7 @@
         })
         li.addEventListener("click",function (){
             //拿到根地址
-            window.location.href = `${window.location.origin}/music/detail.jsp?id=${this.getAttribute("data-id")}`;
+            window.location.href = `${window.location.origin}/music/detail?id=${this.getAttribute("data-id")}`;
         })
     }
     changeA?.addEventListener('click',()=>{

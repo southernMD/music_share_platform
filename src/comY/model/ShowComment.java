@@ -7,7 +7,7 @@ public class ShowComment extends Comment {
     private String isLike;
     private String user_name;
     private String avatar;
-    //get sert
+    //get set
     public String getComment_like_number() {
         return comment_like_number;
     }

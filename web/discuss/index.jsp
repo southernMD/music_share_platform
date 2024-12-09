@@ -1,10 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="comY.util.connectMysql" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="comY.Config" %>
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="comY.model.ShowDiscuss" %>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -27,30 +21,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pagination.css">
 </head>
 
-<%
-    try {
-        Connection conn = connectMysql.getConnection();
-        String sql = "SELECT count(*) as totalItems,ceil(count(*)/?) as currentPage from discuss";
-        PreparedStatement ptmt =  conn.prepareStatement(sql);
-        ptmt.setInt(1, Integer.parseInt(Config.PageSize.getValue()));
-        ResultSet rs = ptmt.executeQuery();
-        while (rs.next()){
-            request.setAttribute("totalItems",rs.getInt("totalItems"));
-            request.setAttribute("currentPage",rs.getInt("currentPage"));
-        }
-    } catch (SQLException e) {
-        throw new RuntimeException(e);
-    }
-
-%>
-
-
 <c:set var="discussList" value='<%=(List<ShowDiscuss>)request.getAttribute("discussList")%>'/>
-
 
 <body>
 <div id="app">
-    <jsp:include page="/template/header.jsp">
+    <jsp:include page="/layout/header.jsp">
         <jsp:param name="active" value="discuss"/>
     </jsp:include>
     <main>
@@ -60,7 +35,7 @@
                 <div class="top" flex flex-row>
                     <img src="${discuss.publicer_avatar}" alt="">
                     <div flex flex-column class="message">
-                        <a href="${pageContext.request.contextPath}/user/index.jsp?id=${discuss.publicer_id}">${discuss.publicer_name}</a>
+                        <a href="${pageContext.request.contextPath}/user/index?id=${discuss.publicer_id}">${discuss.publicer_name}</a>
                         <p small class="time">${discuss.discuss_time}</p>
                     </div>
                 </div>
@@ -72,7 +47,7 @@
                     <h2 small>
                         ${discuss.discuss_main}
                     </h2>
-                    <a blue href="${pageContext.request.contextPath}/discuss/detail.jsp?id=${discuss.id}" small>阅读更多</a>
+                    <a blue href="${pageContext.request.contextPath}/discuss/detail?id=${discuss.id}" small>阅读更多</a>
                 </div>
                 <div class="bottom" flex flex-column>
                     <div class="options" flex small>
@@ -97,8 +72,8 @@
             <a class="next">下一页</a>
         </div>
     </main>
-    <jsp:include page="/template/footer.jsp"/>
-    <jsp:include page="/template/toTop.jsp"/>
+    <jsp:include page="/layout/footer.jsp"/>
+    <jsp:include page="/layout/toTop.jsp"/>
 
 </div>
 <script>

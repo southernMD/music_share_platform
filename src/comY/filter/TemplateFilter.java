@@ -16,7 +16,7 @@ public class TemplateFilter implements Filter {
 
         String requestURI = httpRequest.getRequestURI();
         System.out.print(requestURI);
-        if (requestURI.startsWith("/template/")) {
+        if (requestURI.startsWith("/layout/")) {
             httpResponse.sendRedirect("/");
             return;
         }

@@ -1,13 +1,10 @@
 package comY.dao;
 
 import comY.entity.User;
-import comY.util.MD5SaltUtil;
 import comY.util.connectMysql;
 import comY.util.getSaveFilePath;
 
 import javax.servlet.http.Part;
-import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

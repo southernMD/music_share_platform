@@ -5,8 +5,8 @@
       <map>
         <entry key="file://$PROJECT_DIR$/web/discuss/detail.jsp" value="file://$PROJECT_DIR$/web/discuss" />
         <entry key="file://$PROJECT_DIR$/web/login.jsp" value="file://$PROJECT_DIR$/web" />
-        <entry key="file://$PROJECT_DIR$/web/template/header.jsp" value="file://$PROJECT_DIR$/web" />
-        <entry key="file://$PROJECT_DIR$/web/user/index.jsp" value="file://$PROJECT_DIR$/web/user" />
+        <entry key="file://$PROJECT_DIR$/web/layout/header.jsp" value="file://$PROJECT_DIR$/web" />
+        <entry key="file://$PROJECT_DIR$/web/user/index" value="file://$PROJECT_DIR$/web/user" />
       </map>
     </option>
   </component>

@@ -15,8 +15,7 @@ public class userDiscussOperateDao {
         PreparedStatement ptmt = conn.prepareStatement(sql);
         ptmt.setInt(1, discuss_id);
         ptmt.setInt(2, user_id);
-        int t =  ptmt.executeUpdate();
-        return t;
+        return ptmt.executeUpdate();
     }
     public static int dislike(Integer user_id, Integer discuss_id) throws SQLException {
         String sql = "INSERT INTO discuss_dislike  (discuss_id,user_id)\n" +
@@ -24,8 +23,7 @@ public class userDiscussOperateDao {
         PreparedStatement ptmt = conn.prepareStatement(sql);
         ptmt.setInt(1, discuss_id);
         ptmt.setInt(2, user_id);
-        int t =  ptmt.executeUpdate();
-        return t;
+        return ptmt.executeUpdate();
     }
     public static int del_like(Integer user_id, Integer discuss_id) throws SQLException {
         String sql = "DELETE FROM discuss_like WHERE user_id = ? AND discuss_id = ?";

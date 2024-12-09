@@ -1,6 +1,5 @@
 <%@ page import="comY.entity.User" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%--导入jstl--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="active" value='${pageContext.request.getParameter("active")}' />
 <%
@@ -27,7 +26,7 @@
                     class="active"
                 </c:if>
             >
-                <a href="${pageContext.request.contextPath}/music/index.jsp">音乐</a>
+                <a href="${pageContext.request.contextPath}/music/index">音乐</a>
             </li>
             <li
                 <c:if test='${active == "discuss"}'>
@@ -55,7 +54,7 @@
             >
                 <img src="${user.avatar}" alt="">
                 <div class="user-name">
-                    <a href="${pageContext.request.contextPath}/user/index.jsp?id=${user.id}">${user.username}</a>
+                    <a href="${pageContext.request.contextPath}/user/index?id=${user.id}">${user.username}</a>
                 </div>
                 <div class="login-out">
                     <a href="${pageContext.request.contextPath}/api/quit">退出</a>

@@ -101,7 +101,7 @@
 <body>
 <div id="app">
 
-    <jsp:include page="/template/header.jsp">
+    <jsp:include page="/layout/header.jsp">
         <jsp:param name="active" value="index"/>
     </jsp:include>
     <main>
@@ -138,7 +138,7 @@
                                 <div class="top" flex flex-row>
                                     <img src="${showDiscuss.publicer_avatar}" alt="">
                                     <div flex flex-column class="message">
-                                        <a href="${pageContext.request.contextPath}/user/index.jsp?id=${showDiscuss.publicer_id}">${showDiscuss.publicer_name}</a>
+                                        <a href="${pageContext.request.contextPath}/user/index?id=${showDiscuss.publicer_id}">${showDiscuss.publicer_name}</a>
                                         <p small class="time">${showDiscuss.discuss_time}</p>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@
                                     <h2 small>
                                         ${showDiscuss.discuss_main}
                                     </h2>
-                                    <a blue href="${pageContext.request.contextPath}/discuss/detail.jsp?id=${showDiscuss.id}" small>阅读更多</a>
+                                    <a blue href="${pageContext.request.contextPath}/discuss/detail?id=${showDiscuss.id}" small>阅读更多</a>
                                 </div>
                                 <div class="bottom" flex flex-column>
                                     <div class="options" flex small>
@@ -175,7 +175,7 @@
                         <c:forEach items="${orderSongs}" var="song" varStatus="status">
                             <li>
                                 <div class="index" small>${status.index+1}</div>
-                                <a href="${pageContext.request.contextPath}/music/detail.jsp?id=${song.id}">${song.ar_name} - ${song.song_name}</a>
+                                <a href="${pageContext.request.contextPath}/music/detail?id=${song.id}">${song.ar_name} - ${song.song_name}</a>
                             </li>
                         </c:forEach>
                     </ol>
@@ -184,8 +184,8 @@
             </div>
         </div>
     </main>
-    <jsp:include page="/template/footer.jsp" />
-    <jsp:include page="/template/toTop.jsp"/>
+    <jsp:include page="/layout/footer.jsp" />
+    <jsp:include page="/layout/toTop.jsp"/>
 </div>
     <script type="module" src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>

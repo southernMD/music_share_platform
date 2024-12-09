@@ -37,7 +37,7 @@ public class sendDiscussServlet extends HttpServlet {
             String path = getServletContext().getRealPath("/");
             String img_url = getSaveFilePath.saveFile(part, path,"/public/images/image.jpg");
             sendDiscussDao.sendDiscuss(title,txt,user_id,img_url);
-            res.sendRedirect(req.getContextPath()+"/user/index.jsp?id="+user_id);
+            res.sendRedirect(req.getContextPath()+"/user/index?id="+user_id);
         } catch (Exception e) {
             req.setAttribute("error", e.toString());
             req.getRequestDispatcher("/error.jsp").forward(req, res);

@@ -1,46 +1,7 @@
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="comY.entity.Song" %>
-<%@ page import="comY.util.connectMysql" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="comY.entity.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-<%
-    try {
-        int id = Integer.parseInt(request.getParameter("id"));
-        Connection conn = connectMysql.getConnection();
-        String sql = "SELECT * from songs where id = ?";
-        PreparedStatement ptmt = conn.prepareStatement(sql);
-        ptmt.setInt(1,id);
-        ResultSet rs =  ptmt.executeQuery();
-        List<Song> songs = connectMysql.queryToArrayList(rs, Song.userAllMessageExtractor);
-        request.setAttribute("song",songs.getFirst());
-    } catch (SQLException e) {
-        request.setAttribute("error", e.toString());
-        request.getRequestDispatcher("/error.jsp").forward(request, response);
-    }
-%>
-<%
-    try {
-        Song song = (Song) request.getAttribute("song");
-        int id = song.getUser_id();
-        Connection conn = connectMysql.getConnection();
-        String sql = "SELECT id,user_name,avatar,des from user where id = ?";
-        PreparedStatement ptmt = conn.prepareStatement(sql);
-        ptmt.setInt(1,id);
-        ResultSet rs =  ptmt.executeQuery();
-        List<User> users = connectMysql.queryToArrayList(rs, User.userBaseExtractor);
-        System.out.println(users);
-        request.setAttribute("publisher",users.getFirst());
-    } catch (SQLException e) {
-        request.setAttribute("error", e.toString());
-        request.getRequestDispatcher("/error.jsp").forward(request, response);
-    }
-%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +10,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
     <style>
-        /* styles.css */
         main{
             height: auto;
         }
@@ -152,9 +112,11 @@
 
     </style>
 </head>
+<c:set var="publisher" value='${requestScope.publisher}' />
+<c:set var="song" value="${requestScope.song}" />
 <body>
     <div id="app">
-        <jsp:include page="/template/header.jsp">
+        <jsp:include page="/layout/header.jsp">
             <jsp:param name="active" value="music"/>
         </jsp:include>
         <main>
@@ -187,7 +149,7 @@
                 <div class="message">
                     <div class="publisher-info">
                         <img src="${publisher.avatar}" alt="发布者头像">
-                        <a href="${pageContext.request.contextPath}/user/index.jsp?id=${publisher.id}" class="publisher-name">${publisher.username}</a>
+                        <a href="${pageContext.request.contextPath}/user/index?id=${publisher.id}" class="publisher-name">${publisher.username}</a>
                     </div>
                     <div class="publisher-description">
                        ${song.song_des}
@@ -195,8 +157,8 @@
                 </div>
             </div>
         </main>
-        <jsp:include page="/template/footer.jsp" />
-        <jsp:include page="/template/toTop.jsp"/>
+        <jsp:include page="/layout/footer.jsp" />
+        <jsp:include page="/layout/toTop.jsp"/>
     </div>
     <script type="module" src="${pageContext.request.contextPath}/js/main.js"></script>
 </body>
